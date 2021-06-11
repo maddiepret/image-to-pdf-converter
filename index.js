@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 app.post('/upload', (req, res) => {
     upload(req, res, err => {
         fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
-            if (err) return console.log(`This is you errors ${err}`);
+            if (err) return console.log(`Error: ${err}`);
 
             worker
                 .recognize(data, 'eng', { tessjs_create_pdf: '1' })
